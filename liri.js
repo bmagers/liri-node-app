@@ -62,17 +62,21 @@ function movie(lookup) {
       console.log("Error: " + error);
     } else {
       var results = JSON.parse(body);
-      var movieInfo = "\nTitle: " + results.Title + "\n\n";
-      movieInfo += "Year: " + results.Year + "\n\n";
-      var IMDB = results.Ratings.find((element) => element.Source === "Internet Movie Database");
-      var rottenTomatoes = results.Ratings.find((element) => element.Source === "Rotten Tomatoes");
-      movieInfo += IMDB ? "IMDB Rating: " + IMDB.Value + "\n\n" : "";
-      movieInfo += rottenTomatoes ? "Rotten Tomatoes Rating: " + rottenTomatoes.Value + "\n\n" : "";
-      movieInfo += "Country: " + results.Country + "\n\n";
-      movieInfo += "Language: " + results.Language + "\n\n";
-      movieInfo += "Plot: " + results.Plot + "\n\n";
-      movieInfo += "Actors: " + results.Actors + "\n";
-      write(movieInfo);
+      if (results.length > 0) {
+        var movieInfo = "\nTitle: " + results.Title + "\n\n";
+        movieInfo += "Year: " + results.Year + "\n\n";
+        var IMDB = results.Ratings.find((element) => element.Source === "Internet Movie Database");
+        var rottenTomatoes = results.Ratings.find((element) => element.Source === "Rotten Tomatoes");
+        movieInfo += IMDB ? "IMDB Rating: " + IMDB.Value + "\n\n" : "";
+        movieInfo += rottenTomatoes ? "Rotten Tomatoes Rating: " + rottenTomatoes.Value + "\n\n" : "";
+        movieInfo += "Country: " + results.Country + "\n\n";
+        movieInfo += "Language: " + results.Language + "\n\n";
+        movieInfo += "Plot: " + results.Plot + "\n\n";
+        movieInfo += "Actors: " + results.Actors + "\n";
+        write(movieInfo);
+      } else {
+        write("Movie not found.");
+      }
     }
   });
 }
