@@ -13,14 +13,19 @@ function band(lookup) {
       console.log("Error: " + error);
     } else {
       var results = JSON.parse(body);
-      var tourInfo = "\nTour dates: \n";
-      results.forEach(item => {
-        tourInfo += "\nVenue: " + item.venue.name + "\n";
-        var location = item.venue.city + ", ";
-        location += (item.venue.country === "United States") ? item.venue.region : item.venue.country;
-        tourInfo += "Location: " + location + "\n";
-        tourInfo += "Date: " + moment(item.datetime).format("MM/DD/YYYY") + "\n";
-      })
+      var tourInfo;
+      if (results.length > 0) {
+        tourInfo = "\nTour dates:\n";
+        results.forEach(item => {
+          tourInfo += "\nVenue: " + item.venue.name + "\n";
+          var location = item.venue.city + ", ";
+          location += (item.venue.country === "United States") ? item.venue.region : item.venue.country;
+          tourInfo += "Location: " + location + "\n";
+          tourInfo += "Date: " + moment(item.datetime).format("MM/DD/YYYY") + "\n";
+        });
+      } else {
+        tourInfo = "\nNo upcoming dates.\n";
+      }
       write(tourInfo);
     }
   });
