@@ -21,7 +21,7 @@ function band(lookup) {
         tourInfo += "Location: " + location + "\n";
         tourInfo += "Date: " + moment(item.datetime).format("MM/DD/YYYY") + "\n";
       })
-      console.log(tourInfo);
+      write(tourInfo);
     }
   });
 }
@@ -45,7 +45,7 @@ function song(lookup) {
         var preview = item.preview_url;
         songInfo += preview ? "Preview at: " + preview + "\n" : "";
       });
-      console.log(songInfo);
+      write(songInfo);
     }
   });
 }
@@ -93,11 +93,11 @@ function doWhatItSays() {
 }
 
 function write(data) {
-  fs.appendFile("log.txt", "----------\n" + data, function (error) {
+  fs.appendFile("log.txt", "----------" + data, function (error) {
     if (error) {
       console.log("Error: " + error);
     } else {
-      console.log("\n" + data + "\n");
+      console.log(data);
     }
   });
 }
