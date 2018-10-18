@@ -8,7 +8,7 @@ var inquirer = require("inquirer");
 var spotify = new Spotify(keys.spotify);
 
 function band(lookup) {
-  request("https://rest.bandsintown.com/artists/" + lookup + "/events?app_id=b4597c8b347b8223f05baa44b3752fc9", function(error, response, body) {
+  request("https://rest.bandsintown.com/artists/" + lookup + "/events?app_id=" + keys.bandsintown, function(error, response, body) {
     if (error) {
       console.log("Error: " + error);
     } else {
