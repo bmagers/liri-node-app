@@ -8,4 +8,4 @@ All lookups are saved in a file called log.txt.
 
 The following video demonstrates the use of this application.
 
-[![Watch the video](./node-liri.png)](./node_liri.mov)
+[![Watch the video](./node-liri.png)](../blob/master/node_liri.mov)
