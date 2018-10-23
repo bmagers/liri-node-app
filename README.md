@@ -8,6 +8,4 @@ All lookups are saved in a file called log.txt.
 
 The following video demonstrates the use of this application.
 
-<video width="320" height="240" controls>
-  <source src="video.mov" type="video/mp4">
-</video>
+[![Watch the video](./node-liri.png)](./node_liri.mov)
