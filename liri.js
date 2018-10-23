@@ -57,12 +57,13 @@ function song(lookup) {
 
 function movie(lookup) {
   lookup = lookup ? lookup : "Mr. Nobody";
-  request("https://www.omdbapi.com/?apikey=trilogy&t=" + lookup, function(error, response, body) {
+  var url = "https://www.omdbapi.com/?apikey=" + keys.omdb.id + "&t=" + lookup;
+  request(url, function(error, response, body) {
     if (error) {
       console.log("Error: " + error);
     } else {
       var results = JSON.parse(body);
-      if (results.length > 0) {
+      if (results.Response !== "False") {
         var movieInfo = "\nTitle: " + results.Title + "\n\n";
         movieInfo += "Year: " + results.Year + "\n\n";
         var IMDB = results.Ratings.find((element) => element.Source === "Internet Movie Database");
